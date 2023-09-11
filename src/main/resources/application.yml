@@ -1,0 +1,11 @@
+spring:
+  config:
+    import:
+      - classpath:application-dev.yml
+  profiles:
+    active: develop-common
+
+  messages:
+    basename: business-errors, validation-errors
+    encoding: UTF-8
+

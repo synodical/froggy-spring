@@ -1,0 +1,44 @@
+server:
+  port: 8080
+  address: 0.0.0.0
+  servlet:
+    context-path: /yaho
+
+spring:
+  config:
+    activate:
+      on-profile: develop-common
+  output:
+    ansi:
+      enabled: always
+  datasource:
+    url: jdbc:mysql://localhost:3306/yaho
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        highlight_sql: true
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.MySQLDialect
+  jackson:
+    date-format: "yyyy-MM-dd'T'HH:mm:ss"
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health, info, metrics
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
